@@ -12,8 +12,11 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 import os
 from pathlib import Path
 
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 from decouple import config
+
+# from account.models import MyUser
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -44,9 +47,12 @@ INSTALLED_APPS = [
 
     'django_filters',
 
-    'drf_yasg',
     'rest_framework',
     'rest_framework.authtoken',
+
+    'account',
+    'patient_chart',
+
 ]
 
 MIDDLEWARE = [
@@ -98,6 +104,8 @@ DATABASES = {
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
 
+AUTH_USER_MODEL = 'account.MyUser'
+
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -117,9 +125,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'ru-ru'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Bishkek'
 
 USE_I18N = True
 
@@ -144,6 +152,13 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 JET_SIDE_MENU_COMPACT = True
+# JET_SIDE_MENU_ITEMS = [  # A list of application or custom item dicts
+#         {'label': _('Аккаунт'), 'app_label': 'account', 'items': [
+#             {'name': 'account.myuser'},
+#             {'name': 'account.group'},
+#             # {'name': 'accounts.userlocation'},
+#         ]},
+# ]
 
 JET_THEMES = [
     {
